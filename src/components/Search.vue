@@ -1,11 +1,11 @@
 <template>
     <div>
-        <input type="text" @keypress="searchCDNs(valueInput)" v-model="valueInput">
-  </div>
+        <input type="text" @keypress="searchCDNsAPI(valueInput)" v-model="valueInput">
+    </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
     name: 'searchcdn',
@@ -15,7 +15,7 @@ export default {
         }
     },
     methods: {
-        ...mapMutations(['searchCDNs'])
+        ...mapActions(['searchCDNsAPI'])
     }
 }
 </script>

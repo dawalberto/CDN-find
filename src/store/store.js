@@ -13,8 +13,9 @@ export const store = new Vuex.Store({
         fillListaCDNs: (state, data) => {
             state.allCDNs = data;
         },
-        searchCDNs: (state, name) => {
-            state.foundCDNs = state.allCDNs.filter(cdn => cdn.name.includes(name))
+        searchCDNs: (state, data) => {
+            // state.foundCDNs = state.allCDNs.filter(cdn => cdn.name.includes(name))
+            state.foundCDNs = data;
         }
     },
     actions: {
@@ -22,6 +23,11 @@ export const store = new Vuex.Store({
             axios.get('https://api.cdnjs.com/libraries/')
                 .then(res => context.commit('fillListaCDNs', res.data.results))
                 .catch(err => console.error(err))
-        } 
+        },
+        searchCDNsAPI: (context, search) => {
+            axios.get(`https://api.cdnjs.com/libraries?search=${search}`)
+                .then(res => context.commit('searchCDNs', res.data.results))
+                .catch(err => console.error(err))
+        }
     }
 })
