@@ -27,15 +27,15 @@ import axios from 'axios'
                 show: false
             }
         },
-        beforeMount() {
-            axios.get(`https://api.cdnjs.com/libraries/${this.name}`)
-                .then( (res) => this.cdn = res.data )
-                .catch( (err) => console.log(err) )
-        },
         computed: {
             getAuthor() {
                 return typeof this.cdn.author === 'object' ? this.cdn.author.name : this.cdn.author;
             }
+        },
+        beforeMount() {
+            axios.get(`https://api.cdnjs.com/libraries/${this.name}`)
+                .then( (res) => this.cdn = res.data )
+                .catch( (err) => console.log(err) )
         }
     }
 </script>

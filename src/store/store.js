@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         allCDNs: null,
-        foundCDNs: null,
+        foundCDNs: null
     },
     mutations: {
         fillListaCDNs: (state, data) => {
