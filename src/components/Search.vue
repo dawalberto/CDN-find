@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>FIND ANY CDN</h1>
-        <input type="text" @keypress="searchCDNs(value)" v-model="value" placeholder="vue">
+        <input type="text" @keypress.enter="searchCDNsLower(value)" v-model="value" placeholder="search a CDN and press key enter">
         <h3 v-if="value">{{ foundCDNs.length }} CDNs found for "{{ value }}"</h3>
     </div>
 </template>
@@ -20,7 +20,11 @@ export default {
         ...mapState(['foundCDNs'])
     },
     methods: {
-        ...mapMutations(['searchCDNs'])
+        // ...mapMutations(['searchCDNs'])
+        searchCDNsLower(value) {
+            value = value.toLowerCase();
+            this.$store.commit('searchCDNs', value)
+        }
     }
 }
 </script>
