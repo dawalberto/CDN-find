@@ -1,14 +1,10 @@
 <template>
   <div>
-    <h4>SEARCH ANY CDN</h4>
-
     <searchcdn></searchcdn>
 
-    <cdn v-for="(cdn, index) in foundCDNs" :key="index"
+    <cdn v-for="cdn in foundCDNs" :key="cdn.name"
     :name="cdn.name" 
     :url="cdn.latest">
-      <h5 slot="name">{{ cdn.name }}</h5>
-      <a :href="cdn.latest" slot="url" target="_blanck">{{ cdn.latest }}</a>
     </cdn>
   </div>
 </template>
@@ -27,7 +23,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['allCDNs', 'foundCDNs'])
+    ...mapState(['foundCDNs'])
 
     },
   created() {
@@ -36,6 +32,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

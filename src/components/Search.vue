@@ -1,25 +1,41 @@
 <template>
     <div>
-        <input type="text" @keypress="searchCDNsAPI(valueInput)" v-model="valueInput">
+        <h1>FIND ANY CDN</h1>
+        <input type="text" @keypress="searchCDNs(value)" v-model="value">
     </div>
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapMutations} from 'vuex'
 
 export default {
     name: 'searchcdn',
     data() {
         return {
-            valueInput: null
+            value: null
         }
     },
     methods: {
-        ...mapActions(['searchCDNsAPI'])
+        ...mapMutations(['searchCDNs'])
     }
 }
 </script>
 
 <style scoped>
-
+    div {
+        width: 100%;
+        text-align: center;
+        margin: auto;
+    }
+    input {
+        width: 100%;
+    }
+    @media only screen and (min-width: 768px) {
+        div {
+            width: 90%;
+        }
+        input {
+            width: 30%;
+        }
+    }
 </style>
